@@ -26,19 +26,18 @@ pnpm eval
 `pnpm demo` is the same mock run as `pnpm demo:mock`. On stdout, in this order: `intentional draft-pr FAIL`, `repair 1`, `repairs=1`, `verdict pass`. The run also writes [artifacts/last-run.md](artifacts/last-run.md) and [artifacts/last-run.html](artifacts/last-run.html). Open the HTML for the camera. The sticky header is **verdict pass**. The banner reads FAIL → repair 1 → PASS.
 
 Full 3-minute camera script: [DEMO.md](DEMO.md).
+## For judges
 
-## 给评委
-
-评分只看离线 mock，不要调用 OpenAI。
+Score the offline mock only; do not call OpenAI.
 
 ```bash
 pnpm install
 pnpm demo:mock
 ```
 
-终端应按这个顺序出现 `intentional draft-pr FAIL`、`repair 1`、`repairs=1`、`verdict pass`。然后打开 `artifacts/last-run.html`，顶栏是 verdict pass。
+The terminal should print, in order: `intentional draft-pr FAIL`, `repair 1`, `repairs=1`, `verdict pass`. Then open `artifacts/last-run.html`; the header reads verdict pass.
 
-核对规则：修复后的 claim 必须是工具输出的原样子串；高严重度 issue `#12` 和 `#18` 必须被引用；清单必须覆盖 tests、docs、risk、rollback。第一次失败是故意的，不要把它修掉。`pnpm test` 和 `pnpm eval` 是另外两项离线检查。`pnpm demo:live` 会访问 `api.openai.com`，在中国大陆等地可能被地理封锁，不作为评分路径。
+Checks: each repaired claim must be an exact substring of tool output; high-severity issues `#12` and `#18` must be cited; the checklist must cover tests, docs, risk, and rollback. The first failure is intentional, so don't fix it. `pnpm test` and `pnpm eval` are the other two offline checks. `pnpm demo:live` calls `api.openai.com` and is not part of the scoring path.
 
 ## Architecture
 
