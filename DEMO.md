@@ -15,9 +15,7 @@ pnpm demo:mock
 
 `pnpm test` and `pnpm eval` are the other two offline checks. The rest of this page is the 3-minute camera script.
 
-## 给评委
 
-离线打分只看 mock。第一次 `draft_pr` 故意失败，修一次之后必须出现 `repairs=1` 和 `verdict pass`。引用必须是工具输出里的原样子串。高严重度 issue 是 `#12` 和 `#18`。清单要覆盖 tests、docs、risk、rollback。不要打开密钥，也不要依赖 `pnpm demo:live`（中国大陆可能被 OpenAI 地理封锁）。
 
 ## 0:00–0:20 — The sentence
 
